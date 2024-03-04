@@ -42,13 +42,31 @@ export const productsFilters = [
   {
     id: 1,
     name: "Most Recent",
+    active: true
   },
   {
     id: 2,
     name: "Lowest Price",
+    active: false
   },
   {
     id: 3,
     name: "Highest Price",
+    active: false
+  }
+];
+
+export const aerocardAmounts = [
+  {
+    id: 1,
+    amount: 1000
+  },
+  {
+    id: 2,
+    amount: 5000
+  },
+  {
+    id: 3,
+    amount: 7500
   }
 ];

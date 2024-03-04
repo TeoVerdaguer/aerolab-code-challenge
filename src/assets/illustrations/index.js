@@ -9,6 +9,7 @@ import walkthrough3Desktop from './walkthrough-3-desktop.png';
 import walkthrough1Responsive from './walkthrough-1-responsive.png';
 import walkthrough2Responsive from './walkthrough-2-responsive.png';
 import walkthrough3Responsive from './walkthrough-3-responsive.png';
+import aerocardWave from './aerocardWave.svg';
 
 export {
   heroDesktop,
@@ -21,5 +22,6 @@ export {
   walkthrough3Desktop,
   walkthrough1Responsive,
   walkthrough2Responsive,
-  walkthrough3Responsive
+  walkthrough3Responsive,
+  aerocardWave
 };

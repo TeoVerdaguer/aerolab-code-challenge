@@ -7,6 +7,7 @@ import aeroPay4 from './aeropay-4.svg';
 import arrowIcon from './arrow-icon.svg';
 import chevronActive from './chevron-active.svg';
 import chevronDefault from './chevron-default.svg';
+import chevronDisabled from './chevron-disabled.svg';
 import crossActive from './cross-active.svg';
 import crossDefault from './cross-default.svg';
 import githubActive from './github-active.svg';
@@ -28,6 +29,7 @@ export {
   arrowIcon,
   chevronActive,
   chevronDefault,
+  chevronDisabled,
   crossActive,
   crossDefault,
   githubActive,

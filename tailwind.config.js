@@ -25,6 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         'singleWavePattern': "url('./assets/illustrations/single-wave-pattern.svg')",
+        'aerocardWave': "url('./assets/illustrations/aerocardWave.svg')",
       }
     },
   },
