@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chevronDefault, chevronActive, chevronDisabled } from "../assets/icons";
 
-const ProductPager = () => {
+const ProductPager = ({ numberOfPages, currentPage, setCurrentPage }) => {
   const [prevHovered, setPrevHovered] = useState(false);
   const [nextHovered, setNextHovered] = useState(false);
   const [prevDisabled, setPrevDisabled] = useState(true);
   const [nextDisabled, setNextDisabled] = useState(false);
+
+  useEffect(() => {
+    setPrevDisabled(currentPage === 1);
+    setNextDisabled(currentPage === numberOfPages);
+  }, [currentPage, numberOfPages]);
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < numberOfPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <div
@@ -30,6 +47,7 @@ const ProductPager = () => {
           className="bg-brandLight rounded-lg p-2 hover:bg-brandLight2 cursor-pointer"
           onMouseEnter={() => setPrevHovered(true)}
           onMouseLeave={() => setPrevHovered(false)}
+          onClick={prevPage}
         >
           <img
             src={prevHovered ? chevronActive : chevronDefault}
@@ -41,7 +59,7 @@ const ProductPager = () => {
 
       <p className="mobileTextL1Default text-neutral600">
         Page&nbsp;
-        <span className="gradientText">1 of 3</span>
+        <span className="gradientText">{currentPage} of {numberOfPages}</span>
       </p>
 
       {nextDisabled ? (
@@ -61,6 +79,7 @@ const ProductPager = () => {
         className="bg-brandLight rounded-lg p-2 hover:bg-brandLight2 cursor-pointer"
         onMouseEnter={() => setNextHovered(true)}
         onMouseLeave={() => setNextHovered(false)}
+        onClick={nextPage}
       >
         <img
           src={nextHovered ? chevronActive : chevronDefault}

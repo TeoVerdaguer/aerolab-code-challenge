@@ -21,7 +21,7 @@ const Select = () => {
         onClick={() => setShowFilters(!showFilters)}
       >
         <p className="mobileTextL1Default text-neutral600">{activeFilter}</p>
-        <img src={triangle} alt="arrow down" height={10} width={10} />
+        <img src={triangle} alt="arrow down" height={10} width={10} className={`${showFilters ? 'rotate-180' : ''} transition-all`} />
       </div>
 
       {showFilters && (
@@ -33,7 +33,7 @@ const Select = () => {
             <p
               key={index}
               className="mobileTextL1Default text-neutral600
-              px-6 py-3 hover:bg-neutral100"
+              px-6 py-3 hover:bg-neutral100 cursor-pointer"
               onClick={() => {
                 setActiveFilter(filter);
                 setShowFilters(false);

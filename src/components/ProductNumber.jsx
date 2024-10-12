@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProductNumber = ({ totalProducts }) => {
+const ProductNumber = ({ totalProducts, productsPerPage }) => {
   return (
     <p className='mobileTextL1Default text-neutral600 mt-6 text-center'>
-      <span className='gradientText'>8 of {totalProducts}</span> products
+      <span className='gradientText'>{productsPerPage} of {totalProducts}</span> products
     </p>
   )
 }

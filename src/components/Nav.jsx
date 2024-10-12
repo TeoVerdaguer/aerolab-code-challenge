@@ -10,6 +10,7 @@ import {
 } from "../assets/icons";
 import Aerocard from "./Aerocard";
 import { aerocardAmounts } from "../constants";
+import { motion, AnimatePresence } from "framer-motion"
 
 const Nav = () => {
   const USER_TOKEN = (process.env.REACT_APP_API_KEY);
@@ -41,6 +42,24 @@ const Nav = () => {
     }
   }
 
+  const addPoints = async (amount) => {
+    const URL = `${API_BASE_URL}user/points`;
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${USER_TOKEN}`,
+        },
+        body: JSON.stringify({amount: amount})
+      });
+      getUser();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   function formatDate(dateStr) {
     // Parse the date string with Z timezone format
     const dateObj = new Date(dateStr);
@@ -59,20 +78,25 @@ const Nav = () => {
        flex justify-between px-4 py-2"
         onClick={() => setShowAeropayModule(!showAeropayModule)}
       >
-        <img src={aeroPay1} alt="aeropay icon" className="mr-2" />
+        <img src={aeroPay1} alt="aeropay icon" className="mr-2 " />
         <p className="mobileTextL1Default gradientText">{user.points}</p>
-        <img
+        <motion.img
           src={chevronDefault}
           alt="chevron down"
-          className="rotate-90 ml-4"
+          className={`${showAeropayModule ? '-rotate-90 ml-4' : 'rotate-90 ml-4'} transition-all`}
           onMouseOver={(e) => (e.currentTarget.src = chevronActive)}
           onMouseOut={(e) => (e.currentTarget.src = chevronDefault)}
         />
       </button>
 
+      <AnimatePresence>
       {showAeropayModule && (
-        <div
-          className="absolute top-24 right-5 w-[312px] h-[404px] border border-neutral300
+        <motion.div
+          initial={{ y: -40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -40, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute top-24 right-5 z-50 w-[312px] h-[404px] border border-neutral300
           rounded-2xl bg-white shadow-lg"
         >
           <div className="flex w-full justify-between py-4 px-6 border-b border-neutral300">
@@ -115,14 +139,15 @@ const Nav = () => {
           </div>
           <button
             className="brandDefault py-4 px-6 rounded-2xl
-              mobileTextL1Default flex justify-center gap-2 w-[calc(100%-40px)] mx-auto"
-            onClick={() => console.log(activeAmount)}
+              mobileTextL1Default flex justify-center gap-2 w-[calc(100%-40px)] mx-auto hover:shadow-lg"
+            onClick={() => addPoints(activeAmount)}
           >
             <img src={aeroPay3} alt="aeropay logo" />
             <p className="text-neutral0">Add Points</p>
           </button>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   );
 };

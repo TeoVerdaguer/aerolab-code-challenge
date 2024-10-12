@@ -1,21 +1,28 @@
 import { arrowIcon } from "../assets/icons";
+import { motion } from "framer-motion";
 
 const Hero = ({ scrollToProduct }) => {
   return (
     <section id="Hero" className="px-9 text-center bg-singleWavePattern pb-28">
-      <h1
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 2 }}
         className="mobileTextL1AllCaps24 text-neutral600 mb-2"
       >
         Explore the
-      </h1>
-      <h1
+      </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 3 }}
         className="mobileTitleL1Default text-neutral900"
       >
         <span className="gradientText">
           Tech
         </span>
         Zone
-      </h1>
+      </motion.h1>
       <p className="mt-6 text-neutral600 mobileTextL1Default">
         Here you’ll be able to redeem all of your hard-earned Aeropoints and
         exchange them for cool tech.

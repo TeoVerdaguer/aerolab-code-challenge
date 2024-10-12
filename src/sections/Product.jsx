@@ -5,20 +5,63 @@ import FilterBtn from "../components/FilterBtn";
 import ProductCard from "../components/ProductCard";
 import ProductPager from "../components/ProductPager";
 import ProductNumber from "../components/ProductNumber";
+import { Toaster } from 'react-hot-toast';
 
 const Product = ({ productRef }) => {
   const USER_TOKEN = process.env.REACT_APP_API_KEY;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
   const [activeFilter, setActiveFilter] = useState("Most Recent");
   const [products, setProducts] = useState([]);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [productsPerPage, setProductsPerPage] = useState(8);
+  const [productsInPage, setProductsInPage] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(8);
+  const numberOfPages = Math.ceil(totalProducts / productsPerPage);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (width >= 1920) {
+      setProductsPerPage(16)
+      setProductsInPage(getPaginatedItems)
+     } else {
+      setProductsPerPage(8)
+      setProductsInPage(getPaginatedItems)
+     }
+  }, [width]);
+
+  useEffect(() => {
+    sessionStorage.removeItem('products');
     getProducts();
   }, []);
+
+  useEffect(() => {
+    setProductsInPage(getPaginatedItems);
+  }, [currentPage, activeFilter, products]);
+
+  useEffect(() => {
+    // Most recent
+    if (activeFilter === productsFilters[0].name && sessionStorage.getItem('products')) {
+      setProducts(JSON.parse(sessionStorage.getItem('products')));
+      setCurrentPage(1);
+    // Lowest price
+    } else if (activeFilter === productsFilters[1].name) {
+      const sorted = products.sort((a, b) => a.cost - b.cost);
+      setProducts(sorted);
+      setCurrentPage(1);
+    // Highest price
+    } else if (activeFilter === productsFilters[2].name) {
+      const sorted = (products.sort((a, b) => b.cost - a.cost));
+      setProducts(sorted);
+      setCurrentPage(1);
+    }
+  }, [activeFilter]);
 
   /**
    * @desc Gets the list of products
@@ -38,10 +81,19 @@ const Product = ({ productRef }) => {
       });
       const data = await response.json();
       setProducts(data);
+      sessionStorage.setItem('products', JSON.stringify(data));
+      setTotalProducts(data.length);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Get items for the current page
+  const getPaginatedItems = () => {
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    return products.slice(start, end);
   };
 
   if (isLoading) {
@@ -65,7 +117,7 @@ const Product = ({ productRef }) => {
         <Select />
         <div
           className="flex gap-1 mt-6 overflow-scroll whitespace-nowrap
-      flex-grow no-scrollbar mx-[-1.3rem] px-5 mb-16"
+          flex-grow no-scrollbar mx-[-1.3rem] px-5 mb-16"
         >
           {productsFilters.map((filter, id) => (
             <FilterBtn
@@ -76,11 +128,32 @@ const Product = ({ productRef }) => {
             />
           ))}
         </div>
-        {products.map((product) => (
-          <ProductCard {...product} />
-        ))}
-        <ProductPager />
-        <ProductNumber totalProducts={products.length} />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {productsInPage.map((product) => (
+            <ProductCard key={product._id} {...product} />
+          ))}
+        </div>
+        <ProductPager numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <ProductNumber totalProducts={totalProducts} productsPerPage={productsPerPage} />
+        <Toaster
+          position="bottom-left"
+          toastOptions={{
+            success: {
+              style: {
+                border: '2px solid #29CC74',
+                padding: '16px',
+                color: '#7C899C',
+              },
+            },
+            error: {
+              style: {
+                border: '2px solid #E07F4F',
+                padding: '16px',
+                color: '#7C899C',
+              },
+            }
+          }}
+        />
       </section>
     );
   }
