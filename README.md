@@ -1,9 +1,14 @@
-# Getting Started with Create React App
+# Aerolab Code Challenge
+![Screenshot 2024-10-16 at 1 15 18 AM](https://github.com/user-attachments/assets/b5d9acce-c2c7-4652-9c04-c566d01b6fd8)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The challenge is to build a catalog view for a loyalty program app. We’ll provide you with the base UI and API, you can use it as provided or you can make any improvements you deem fit. It’s up to you, your imagination and your skills to come up with new solutions and/or interactions between the components.
 
+You’ll notice there isn’t a responsive version of the app, you decide if you do something about it or not.
+
+Remember that the product’s main goal is to help users redeem items through a points-based system. We expect your end-product to be both visually attractive and functionally effective.
+
+## Scripts
 In the project directory, you can run:
 
 ### `npm start`
@@ -39,32 +44,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
