@@ -3,10 +3,11 @@ import Hero from "./sections/Hero";
 import Product from "./sections/Product";
 import Walkthrough from "./sections/Walkthrough";
 import Footer from "./sections/Footer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   const product = useRef(null);
+  const [user, setUser] = useState({});
 
   const scrollToProduct = () => {
     window.scrollTo({
@@ -17,11 +18,11 @@ function App() {
 
   return (
     <main>
-      <Nav />
-        <Hero scrollToProduct={scrollToProduct}/>
-        <Walkthrough />
-        <Product productRef={product}/>
-        <Footer />
+      <Nav user={user} setUser={setUser} />
+      <Hero scrollToProduct={scrollToProduct} />
+      <Walkthrough />
+      <Product productRef={product} user={user} setUser={setUser} />
+      <Footer />
     </main>
   );
 }

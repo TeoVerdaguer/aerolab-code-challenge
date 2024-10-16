@@ -22,12 +22,13 @@
     @apply bg-gradient-to-r from-[#1667D9] to-[#F279F2];
   }
 
-  .illustrationBg {
-    @apply bg-gradient-to-r from-[#7296EB] to-[#EAC0E9];
+  .sectionBg {
+    @apply bg-gradient-to-r;
+    background-image: linear-gradient(to right, rgba(23, 102, 235, 0.5), rgba(255, 128, 255, 0.5));
   }
 
-  .sectionBg {
-    @apply bg-gradient-to-r from-[#176FEB80] to-[#FF80FF80];
+  .illustrationBg {
+    @apply bg-gradient-to-r from-[#7296EB] to-[#EAC0E9];
   }
 
   .aerolabSpecial {
@@ -101,5 +102,4 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
   }
-
 }

@@ -7,7 +7,7 @@ import ProductPager from "../components/ProductPager";
 import ProductNumber from "../components/ProductNumber";
 import { Toaster } from 'react-hot-toast';
 
-const Product = ({ productRef }) => {
+const Product = ({ productRef, user, setUser }) => {
   const USER_TOKEN = process.env.REACT_APP_API_KEY;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [activeFilter, setActiveFilter] = useState("Most Recent");
@@ -109,7 +109,7 @@ const Product = ({ productRef }) => {
     );
   } else {
     return (
-      <section id="product" ref={productRef} className="mt-20 mx-5">
+      <section id="product" ref={productRef} className="mt-20 mx-4 2xl:mx-[80px]">
         <h2 className="mobileTitleL2Default text-neutral900 mb-10">
           <span className="gradientText">Tech</span> Products
         </h2>
@@ -130,7 +130,7 @@ const Product = ({ productRef }) => {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {productsInPage.map((product) => (
-            <ProductCard key={product._id} {...product} />
+            <ProductCard user={user} setUser={setUser} key={product._id} {...product} />
           ))}
         </div>
         <ProductPager numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
