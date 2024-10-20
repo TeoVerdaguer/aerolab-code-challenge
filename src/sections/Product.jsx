@@ -21,10 +21,13 @@ const Product = ({ productRef, user, setUser }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
+    sessionStorage.removeItem('products');
+    getProducts();
+
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  });
 
   useEffect(() => {
     if (width >= 1024) {
@@ -38,11 +41,6 @@ const Product = ({ productRef, user, setUser }) => {
       setProductsInPage(getPaginatedItems)
      }
   }, [width]);
-
-  useEffect(() => {
-    sessionStorage.removeItem('products');
-    getProducts();
-  }, []);
 
   useEffect(() => {
     setProductsInPage(getPaginatedItems);

@@ -7,6 +7,7 @@ const Footer = () => {
         className="flex items-center justify-center h-[120px] gap-2 group"
         href="https://github.com/TeoVerdaguer/aerolab-code-challenge"
         target="_blank"
+        rel="noreferrer"
       >
         <img
           src={githubDefault}
