@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b9b0a83f.css",
-    "main.js": "/static/js/main.1bca08f1.js",
+    "main.js": "/static/js/main.a3aa8ee7.js",
     "static/js/453.0ae6ec3e.chunk.js": "/static/js/453.0ae6ec3e.chunk.js",
     "static/media/hero-desktop.png": "/static/media/hero-desktop.72f215716931ea5f7f80.png",
     "static/media/walkthrough-2-desktop.png": "/static/media/walkthrough-2-desktop.893e5cf1a09d9460d662.png",
@@ -37,11 +37,11 @@
     "static/media/chevron-active.svg": "/static/media/chevron-active.ba815dba989e754cba106d5051f388cd.svg",
     "static/media/chevron-default.svg": "/static/media/chevron-default.a7f53eb06833cc04489bec1eeb5a4df4.svg",
     "main.b9b0a83f.css.map": "/static/css/main.b9b0a83f.css.map",
-    "main.1bca08f1.js.map": "/static/js/main.1bca08f1.js.map",
+    "main.a3aa8ee7.js.map": "/static/js/main.a3aa8ee7.js.map",
     "453.0ae6ec3e.chunk.js.map": "/static/js/453.0ae6ec3e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b9b0a83f.css",
-    "static/js/main.1bca08f1.js"
+    "static/js/main.a3aa8ee7.js"
   ]
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { productsFilters } from "../constants";
 import Select from "../components/Select";
 import FilterBtn from "../components/FilterBtn";
@@ -29,6 +29,13 @@ const Product = ({ productRef, user, setUser }) => {
     return () => window.removeEventListener("resize", handleResize);
   });
 
+  // Get items for the current page
+  const getPaginatedItems = useCallback(() => {
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    return products.slice(start, end);
+  }, [currentPage, productsPerPage, products]);
+
   useEffect(() => {
     if (width >= 1024) {
       setProductsPerPage(12)
@@ -40,11 +47,11 @@ const Product = ({ productRef, user, setUser }) => {
       setProductsPerPage(8)
       setProductsInPage(getPaginatedItems)
      }
-  }, [width]);
+  }, [width, getPaginatedItems]);
 
   useEffect(() => {
     setProductsInPage(getPaginatedItems);
-  }, [currentPage, activeFilter, products]);
+  }, [currentPage, activeFilter, products, getPaginatedItems]);
 
   useEffect(() => {
     // Most recent
@@ -62,7 +69,7 @@ const Product = ({ productRef, user, setUser }) => {
       setProducts(sorted);
       setCurrentPage(1);
     }
-  }, [activeFilter]);
+  }, [activeFilter, products]);
 
   /**
    * @desc Gets the list of products
@@ -88,13 +95,6 @@ const Product = ({ productRef, user, setUser }) => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  // Get items for the current page
-  const getPaginatedItems = () => {
-    const start = (currentPage - 1) * productsPerPage;
-    const end = start + productsPerPage;
-    return products.slice(start, end);
   };
 
   if (isLoading) {
