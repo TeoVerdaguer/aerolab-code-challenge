@@ -27,7 +27,10 @@ const Product = ({ productRef, user, setUser }) => {
   }, []);
 
   useEffect(() => {
-    if (width >= 1920) {
+    if (width >= 1024) {
+      setProductsPerPage(12)
+      setProductsInPage(getPaginatedItems)
+    } else if (width >= 1920) {
       setProductsPerPage(16)
       setProductsInPage(getPaginatedItems)
      } else {
@@ -109,15 +112,18 @@ const Product = ({ productRef, user, setUser }) => {
     );
   } else {
     return (
-      <section id="product" ref={productRef} className="mt-20 mx-4 2xl:mx-[80px]">
+      <section id="product" ref={productRef} className="mt-20 mx-4 2xl:mx-[80px] max-w-[1464px] 2xl:mx-auto">
         <h2 className="mobileTitleL2Default text-neutral900 mb-10">
           <span className="gradientText">Tech</span> Products
         </h2>
 
-        <Select />
+        <div className="lg:flex lg:justify-between">
+          <Select />
+          <ProductPager numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        </div>
         <div
           className="flex gap-1 mt-6 overflow-scroll whitespace-nowrap
-          flex-grow no-scrollbar mx-[-1.3rem] px-5 mb-16"
+          flex-grow no-scrollbar mx-[-1.3rem] px-5 mb-4"
         >
           {productsFilters.map((filter, id) => (
             <FilterBtn
@@ -133,8 +139,12 @@ const Product = ({ productRef, user, setUser }) => {
             <ProductCard user={user} setUser={setUser} key={product._id} {...product} />
           ))}
         </div>
-        <ProductPager numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <ProductNumber totalProducts={totalProducts} productsPerPage={productsPerPage} />
+        <div className="w-full mt-10 mx-auto flex flex-col items-center align-middle 2xl:flex-row-reverse">
+          <ProductPager numberOfPages={numberOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          <ProductNumber totalProducts={totalProducts} productsPerPage={productsPerPage} />
+          <div className="hidden 2xl:flex 2xl:w-[240px]"></div>
+        </div>
+        {/* <ProductNumber totalProducts={totalProducts} productsPerPage={productsPerPage} /> */}
         <Toaster
           position="bottom-left"
           toastOptions={{

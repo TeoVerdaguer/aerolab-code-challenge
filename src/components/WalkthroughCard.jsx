@@ -3,7 +3,7 @@ const WalkthroughCard = ({ id, img, alt, icon, title, text }) => {
     <div className={`border border-neutral300 bg-white mx-6 lg:mx-2 mb-6 p-3 
       rounded-[32px] flex flex-col max-w-80 2xl:max-w-[532px] 2xl:h-[676px]
       2xl:w-[532px] 2xl:mt-[-80px]
-      ${id === 1 && '2xl:-relative-3 2xl:-rotate-3 2xl:-mr-20 2xl:left-12'}
+      ${id === 1 && '2xl:relative 2xl:-rotate-3 2xl:-mr-20 2xl:left-12'}
       ${id === 2 && '2xl:relative 2xl:left-auto 2xl:right-auto 2xl:-top-10'}
       ${id === 3 && '2xl:relative 2xl:rotate-3 2xl:right-12'}
       `}>
@@ -24,7 +24,7 @@ const WalkthroughCard = ({ id, img, alt, icon, title, text }) => {
             </div>
             <h2 className="gradientText mobileTitleL3Default">{title}</h2>
           </div>
-          <p className="mt-3 mobileTextL1Default text-neutral600">{text}</p>
+          <p className="mt-3 mobileTextL1Default text-neutral600 2xl:max-w-[340px]">{text}</p>
         </div>
       </div>
     </div>

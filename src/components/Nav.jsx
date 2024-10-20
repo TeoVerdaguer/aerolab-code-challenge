@@ -86,7 +86,7 @@ const Nav = ({ user, setUser }) => {
   }
 
   return (
-    <nav className="mx-5 flex justify-between items-center py-10 2xl:mb-[130px] 2xl:mx-[80px]">
+    <nav className="mx-5 flex justify-between items-center py-10 2xl:mb-[130px] xl:mx-60">
       {width >= 1536 ? (
         <img src={aerolabLogo1} height={48} width={120} alt="aerolab logo" />
       ) : (
@@ -115,7 +115,7 @@ const Nav = ({ user, setUser }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -40, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute top-24 right-5 2xl:right-20 z-50 w-[312px] h-[404px] border border-neutral300
+          className="absolute top-24 right-5 xl:right-20 2xl:right-60 z-50 w-[312px] h-[404px] border border-neutral300
           rounded-2xl bg-white shadow-lg"
         >
           <div className="flex w-full justify-between py-4 px-6 border-b border-neutral300">

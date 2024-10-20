@@ -16,7 +16,7 @@ const Select = () => {
   return (
     <div>
       <div
-        className="w-full border border-neutral300 rounded-2xl py-4 pl-6
+        className="w-full lg:w-[256px] border border-neutral300 rounded-2xl py-4 pl-6
         pr-3 flex justify-between cursor-pointer"
         onClick={() => setShowFilters(!showFilters)}
       >

@@ -14,7 +14,7 @@ const Walkthrough = () => {
         width={580}
         className="max-w-[897px] mt-[-120px] lg:mt-[-320px] 2xl:hidden"
       />
-      <div className="lg:flex 2xl:min-h-[528px]">
+      <div className="lg:flex 2xl:min-h-[528px] 2xl:mx-60">
         {walkthroughCards.map((card, id) => (
           <WalkthroughCard key={id} {...card} />
         ))

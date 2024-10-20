@@ -26,9 +26,8 @@ const ProductPager = ({ numberOfPages, currentPage, setCurrentPage }) => {
 
   return (
     <div
-      className="mt-16 w-[240px] border border-neutral300 
-      rounded-2xl flex gap-6 justify-center items-center
-      py-3 mx-auto"
+      className="hidden lg:flex mt-16 mx-auto py-3 lg:mt-0 lg:py-0 lg:mx-0 w-[240px] h-[58px] border border-neutral300
+      rounded-2xl gap-6 justify-center items-center"
     >
       {prevDisabled ? (
         <div
