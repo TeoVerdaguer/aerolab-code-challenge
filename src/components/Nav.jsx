@@ -30,7 +30,7 @@ const Nav = ({ user, setUser }) => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  });
+  }, []);
 
   const getUser = async () => {
     const URL = `${API_BASE_URL}user/me`;

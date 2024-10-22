@@ -27,7 +27,7 @@ const Product = ({ productRef, user, setUser }) => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  });
+  }, []);
 
   // Get items for the current page
   const getPaginatedItems = () => {
