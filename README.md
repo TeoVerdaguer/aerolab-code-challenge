@@ -8,6 +8,9 @@ You’ll notice there isn’t a responsive version of the app, you decide if you
 
 Remember that the product’s main goal is to help users redeem items through a points-based system. We expect your end-product to be both visually attractive and functionally effective.
 
+## Demo
+https://aerolab-code-challenge.netlify.app/
+
 ## Scripts
 In the project directory, you can run:
 
