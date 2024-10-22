@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { productsFilters } from "../constants";
 import Select from "../components/Select";
 import FilterBtn from "../components/FilterBtn";
@@ -30,11 +30,11 @@ const Product = ({ productRef, user, setUser }) => {
   });
 
   // Get items for the current page
-  const getPaginatedItems = useCallback(() => {
+  const getPaginatedItems = () => {
     const start = (currentPage - 1) * productsPerPage;
     const end = start + productsPerPage;
     return products.slice(start, end);
-  }, [currentPage, productsPerPage, products]);
+  };
 
   useEffect(() => {
     if (width >= 1024) {
@@ -47,11 +47,11 @@ const Product = ({ productRef, user, setUser }) => {
       setProductsPerPage(8)
       setProductsInPage(getPaginatedItems)
      }
-  }, [width, getPaginatedItems]);
+  }, [width]);
 
   useEffect(() => {
     setProductsInPage(getPaginatedItems);
-  }, [currentPage, activeFilter, products, getPaginatedItems]);
+  }, [currentPage, activeFilter, products]);
 
   useEffect(() => {
     // Most recent
@@ -69,7 +69,7 @@ const Product = ({ productRef, user, setUser }) => {
       setProducts(sorted);
       setCurrentPage(1);
     }
-  }, [activeFilter, products]);
+  }, [activeFilter]);
 
   /**
    * @desc Gets the list of products
